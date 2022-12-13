@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <title>Frontend Mentor | Multi-step form</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <main>
+        <aside>
+            <ul>
+                <li>
+                    <div class="step-number active">1</div>
+                    <div class="step-info">
+                        <p class="step-number">Step 1</p>
+                        <p class="step-name">Your info</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-number">2</div>
+                    <div class="step-info">
+                        <p class="step-number">Step 2</p>
+                        <p class="step-name">Select plan</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-number">3</div>
+                    <div class="step-info">
+                        <p class="step-number">Step 3</p>
+                        <p class="step-name">Add-ons</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-number">4</div>
+                    <div class="step-info">
+                        <p class="step-number">Step 4</p>
+                        <p class="step-name">Summary</p>
+                    </div>
+                </li>
+
+            </ul>
+        </aside>
+        <form action="" novalidate id="form">
+            <div class="step active">
+                <h2 class="step-heading">Personal info</h2>
+                <p class="step-description">Please provide your name, email address, and phone number.</p>
+                <div class="form-control">
+                    <label for="">Name</label>
+                    <input type="text" placeholder="e.g. Stephen King">
+                    <span class="error">This field is required</span>
+                </div>
+                <div class="form-control">
+                    <label for="">Email Address</label>
+                    <input type="email" placeholder="e.g. stephenking@lorem.com">
+                    <span class="error">This field is required</span>
+                </div>
+                <div class="form-control">
+                    <label for="">Phone Number</label>
+                    <input type="text" placeholder="e.g. +1 234 567 890">
+                    <span class="error">This field is required</span>
+                </div>
+
+
+            </div>
+            <div class="step">
+                <h2 class="step-heading">Select your plan</h2>
+                <p class="step-description">You have the option of monthly or yearly billing.</p>
+                <div class="plans-wrapper">
+                    <div class="plan">
+                        <input type="radio" name="plan" id="test" checked value="9">
+                        <img src="assets/images/icon-arcade.svg" alt="">
+                        <div class="plan-info">
+                            <h3 class="plan-name">Arcade</h3>
+                            <p class="plan-price">$9/mo</p>
+                            <p class="free-months">2 months free</p>
+                        </div>
+                    </div>
+                    <div class="plan">
+                        <input type="radio" name="plan" id="" value="12">
+                        <img src="assets/images/icon-advanced.svg" alt="">
+                        <div class="plan-info">
+                            <h3 class="plan-name">Advanced</h3>
+                            <p class="plan-price">$12/mo</p>
+                            <p class="free-months">2 months free</p>
+                        </div>
+                    </div>
+                    <div class="plan">
+                        <input type="radio" name="plan" id="" value="15">
+                        <img src="assets/images/icon-pro.svg" alt="">
+                        <div class="plan-info">
+                            <h3 class="plan-name">Pro</h3>
+                            <p class="plan-price">$15/mo</p>
+                            <p class="free-months">2 months free</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="subscription">
+                    <p class="sub-type active" id="monthly-sub">Monthly</p>
+                    <div class="switcher "></div>
+                    <p class="sub-type" id="yearly-sub">Yearly</p>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="back" class="">Go Back</button>
+                <button id="next">Next Step</button>
+            </div>
+        </form>
+    </main>
+    <script src="main.js"></script>
+</body>
+
+</html>
