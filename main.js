@@ -366,7 +366,9 @@ function showMessageOfThanks() {
 }
 function redirectToTheFirstStep() {
   nextBtn.parentElement.style.display = "flex";
+
   moveToStep(steps, steps[4], steps[0]);
+  checker(steps[0])
   moveToStep(stepNumbers, stepNumbers[3], stepNumbers[0]);
 }
 function emptyFields() {
