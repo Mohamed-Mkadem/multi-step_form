@@ -204,7 +204,6 @@ main form .step .plans-wrapper .plan .plan-info .free-months {
   color: var(--primary-100);
   margin-top: 10px;
   display: none;
-  /* transition: var(--main-transition); */
 }
 main form .step .plans-wrapper .plan .plan-info .free-months.active {
   display: block;
@@ -250,19 +249,13 @@ main form .step .plans-wrapper .plan .plan-info .plan-price {
   background: white;
   border-radius: 50%;
   top: 4px;
-  /* transition: var(--main-transition); */
 }
-.subscription .switcher[data-billing="Monthly"] {
-  /* background-color: red; */
-}
+
 .subscription .switcher[data-billing="Yearly"]::after {
   right: 4px;
-  /* background-color: rgb(0, 81, 255); */
 }
 
 /* Add-ons step */
-.add-ons-wrapper {
-}
 .add-ons-wrapper .add-on {
   margin-bottom: 15px;
   display: flex;
@@ -295,7 +288,6 @@ main form .step .plans-wrapper .plan .plan-info .plan-price {
   aspect-ratio: 1;
   left: 0;
   top: 50%;
-  /* transform: translateY(-50%); */
   translate: 0 -50%;
   border-radius: 5px;
 }
@@ -312,7 +304,6 @@ main form .step .plans-wrapper .plan .plan-info .plan-price {
   justify-content: center;
   align-items: center;
   scale: 0;
-  /* transition: var(--main-transition); */
 }
 .add-ons-wrapper .add-on input[type="checkbox"]:checked {
   border: 1px solid var(--primary-200);
@@ -348,8 +339,7 @@ main form .step .plans-wrapper .plan .plan-info .plan-price {
   padding-bottom: 20px;
   border-bottom: 1px solid var(--neutral-200);
 }
-.final-wrapper header .plan-info {
-}
+
 .final-wrapper header .plan-info .plan-name {
   color: var(--primary-100);
   font-weight: 700;
@@ -398,7 +388,6 @@ main form .step .plans-wrapper .plan .plan-info .plan-price {
   width: 55px;
 }
 .final-step h3 {
-  /* margin-block: 15px; */
   color: var(--primary-100);
   letter-spacing: 1px;
 }
