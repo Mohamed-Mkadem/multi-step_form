@@ -38,8 +38,8 @@ main {
 main aside {
   background: url(assets/images/bg-sidebar-mobile.svg) center/cover no-repeat;
   border-radius: 0;
-  flex-basis: 30%;
   padding: 25px;
+  height: 180px;
 }
 main aside ul {
   display: flex;
@@ -77,17 +77,23 @@ main form .step {
   height: 0;
 }
 main form .step.active {
-  position: absolute;
+  animation: fix .4s ease-in ;
+  position: relative;
   left: 5%;
   top: -80px;
   width: 90%;
   padding: 30px 25px 25px;
-  transition: var(--main-transition);
   height: auto;
   background: var(--neutral-500);
   border-radius: 10px;
-  padding-bottom: 100px;
-  /* background-color: red; */
+}
+@keyframes fix {
+   0%{
+    opacity: 0;
+  } 
+  100%{
+    opacity: 1;
+  }
 }
 main form .step h2.step-heading {
   color: var(--primary-100);
@@ -126,7 +132,6 @@ main form .step .form-control input {
   border: 1px solid var(--neutral-100);
   border-radius: 5px;
   outline: none;
-  transition: var(--main-transition);
   color: var(--primary-100);
   font-weight: 700;
 }
@@ -140,10 +145,8 @@ main .buttons {
   display: flex;
   justify-content: space-between;
   background: var(--neutral-500);
-  position: fixed; 
-   bottom: 0;
   width: 100%;
-  padding: 5%;
+  padding: 15px 5%;
 }
 main .buttons #next {
   background: var(--primary-100);
@@ -153,6 +156,9 @@ main .buttons #next {
   border-radius: 10px;
   transition: var(--main-transition);
   cursor: pointer;
+}
+main .buttons #next.confirm {
+  background-color: var(--primary-200);
 }
 main .buttons #back {
   visibility: hidden;
@@ -166,6 +172,239 @@ main .buttons #back {
 }
 main .buttons #back.open {
   visibility: visible;
+}
+main form .step .plans-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+main form .step .plans-wrapper .plan {
+  position: relative;
+  padding: 15px;
+  border: 1px solid var(--neutral-100);
+  border-radius: 10px;
+  isolation: isolate;
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+main form .step .plans-wrapper .plan input[type="radio"] {
+  cursor: pointer;
+  position: absolute;
+  inset: 0;
+  appearance: none;
+  border-radius: 10px;
+  z-index: -1;
+}
+main form .step .plans-wrapper .plan input[type="radio"]:checked {
+  border: 1px solid var(--primary-200);
+  background: var(--primary-350);
+}
+main form .step .plans-wrapper .plan .plan-info .free-months {
+  color: var(--primary-100);
+  margin-top: 10px;
+  display: none;
+  /* transition: var(--main-transition); */
+}
+main form .step .plans-wrapper .plan .plan-info .free-months.active {
+  display: block;
+}
+main form .step .plans-wrapper .plan .plan-info .plan-name {
+  color: var(--primary-100);
+  margin-bottom: 5px;
+}
+
+main form .step .plans-wrapper .plan .plan-info .plan-price {
+  color: var(--neutral-100);
+}
+.subscription {
+  background-color: var(--primary-350);
+  margin-block: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  border-radius: 5px;
+}
+.subscription .sub-type {
+  font-weight: 700;
+  color: var(--neutral-100);
+}
+.subscription .sub-type.active {
+  color: var(--primary-100);
+}
+.subscription .switcher {
+  background: var(--primary-100);
+  width: 40px;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  padding-inline: 4px;
+  height: 22px;
+}
+.subscription .switcher::after {
+  position: absolute;
+  content: "";
+  width: 14px;
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 50%;
+  top: 4px;
+  /* transition: var(--main-transition); */
+}
+.subscription .switcher[data-billing="Monthly"] {
+  /* background-color: red; */
+}
+.subscription .switcher[data-billing="Yearly"]::after {
+  right: 4px;
+  /* background-color: rgb(0, 81, 255); */
+}
+
+/* Add-ons step */
+.add-ons-wrapper {
+}
+.add-ons-wrapper .add-on {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--neutral-100);
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+.add-ons-wrapper .add-on input[type="checkbox"] {
+  appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  inset: 0;
+  cursor: pointer;
+  isolation: isolate;
+  z-index: 10;
+}
+
+.add-ons-wrapper .add-on .add-on-info {
+  flex: 1;
+  position: relative;
+  padding-left: 30px;
+}
+.add-ons-wrapper .add-on .add-on-info::after,
+.add-ons-wrapper .add-on .add-on-info::before {
+  position: absolute;
+  aspect-ratio: 1;
+  left: 0;
+  top: 50%;
+  /* transform: translateY(-50%); */
+  translate: 0 -50%;
+  border-radius: 5px;
+}
+.add-ons-wrapper .add-on .add-on-info::after {
+  content: "";
+  width: 18px;
+  border: 1px solid var(--neutral-100);
+}
+.add-ons-wrapper .add-on .add-on-info::before {
+  content: url(assets/images/icon-checkmark.svg);
+  background: var(--primary-200);
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scale: 0;
+  /* transition: var(--main-transition); */
+}
+.add-ons-wrapper .add-on input[type="checkbox"]:checked {
+  border: 1px solid var(--primary-200);
+}
+.add-ons-wrapper .add-on input[type="checkbox"]:checked + .add-on-info::before {
+  rotate: 1turn;
+  scale: 1;
+}
+.add-ons-wrapper .add-on .add-on-info .add-on-name {
+  color: var(--primary-100);
+  margin-bottom: 5px;
+}
+.add-ons-wrapper .add-on .add-on-info .add-on-description {
+  color: var(--neutral-100);
+  font-size: 14px;
+}
+.add-ons-wrapper .add-on .add-on-price {
+  color: var(--primary-200);
+  font-size: 14px;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Step 4 */
+.final-wrapper {
+  background-color: var(--neutral-300);
+  padding: 15px;
+  border-radius: 5px;
+}
+.final-wrapper header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--neutral-200);
+}
+.final-wrapper header .plan-info {
+}
+.final-wrapper header .plan-info .plan-name {
+  color: var(--primary-100);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.final-wrapper header .plan-info button {
+  color: var(--neutral-100);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: underline solid 2px;
+}
+.final-wrapper header .plan-price {
+  font-weight: 700;
+  color: var(--primary-100);
+}
+.final-wrapper .final-item {
+  padding-block: 10px;
+}
+.final-wrapper .final-item .item-name {
+  color: var(--neutral-100);
+}
+.final-wrapper .final-item .item-price {
+  color: var(--primary-100);
+}
+.total {
+  padding: 15px;
+}
+.total .total-type {
+  color: var(--neutral-100);
+}
+.total .total-price {
+  color: var(--primary-200);
+  font-weight: 700;
+}
+.final-step {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+}
+.final-step img {
+  width: 55px;
+}
+.final-step h3 {
+  /* margin-block: 15px; */
+  color: var(--primary-100);
+  letter-spacing: 1px;
+}
+.final-step p {
+  color: var(--neutral-100);
+  line-height: 1.5;
 }
 @media (min-width: 768px) {
   body {
@@ -184,14 +423,9 @@ main .buttons #back.open {
   main aside {
     flex-basis: 30%;
     border-radius: 10px;
-
-    /* 
-    background-image: url("assets/images/bg-sidebar-desktop.svg");
-    background-position: bottom;
-    background-size: cover;
-    background-repeat: no-repeat; */
     background: url("assets/images/bg-sidebar-desktop.svg") bottom/cover
       no-repeat;
+    flex-basis: 30%;
     height: auto;
   }
   main aside ul {
@@ -224,16 +458,17 @@ main .buttons #back.open {
   main form .step {
     width: 0;
     overflow: hidden;
-    height: auto;
   }
   main form .step.active {
     left: 0;
     top: 0;
     width: 100%;
     padding: 30px 25px 25px;
-    transition: var(--main-transition);
   }
-
+  main .buttons {
+    position: absolute;
+    bottom: 0;
+  }
   main form #next:hover {
     background-color: var(--primary-150);
   }
@@ -242,109 +477,23 @@ main .buttons #back.open {
   }
   /* Plan step */
   main form .step .plans-wrapper {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
   }
   main form .step .plans-wrapper .plan {
-    position: relative;
-    padding: 15px;
-    border: 1px solid var(--neutral-100);
-    border-radius: 10px;
     cursor: pointer;
-    isolation: isolate;
+    flex-direction: column;
+    gap: 40px;
   }
-  main form .step .plans-wrapper .plan input[type="radio"] {
+  /* Step 3 */
+  .add-ons-wrapper .add-on {
     cursor: pointer;
-    /* display: none; */
-    position: absolute;
-    inset: 0;
-    appearance: none;
-    /* transition: var(--main-transition); */
-    border-radius: 10px;
-    z-index: -1;
   }
-  main form .step .plans-wrapper .plan input[type="radio"]:checked {
-    border: 1px solid var(--primary-200);
-    background: var(--primary-350);
+  .add-ons-wrapper .add-on .add-on-info .add-on-description,
+  .add-ons-wrapper .add-on .add-on-price {
+    font-size: 16px;
   }
-  main form .step .plans-wrapper .plan img {
-  }
-  main form .step .plans-wrapper .plan .plan-info {
-    margin-top: 40px;
-  }
-  main form .step .plans-wrapper .plan .plan-info .plan-name {
-    color: var(--primary-100);
-    margin-bottom: 5px;
-  }
-  main form .step .plans-wrapper .plan .plan-info .free-months {
-    color: var(--primary-100);
-    margin-top: 10px;
-    display: none;
-    transition: var(--main-transition);
-  }
-  main form .step .plans-wrapper .plan .plan-info .free-months.active {
-    display: block;
-  }
-  main form .step .plans-wrapper .plan .plan-info .plan-price {
-    color: var(--neutral-100);
-  }
-  .subscription {
-    background-color: var(--primary-350);
-    margin-block: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px;
-    border-radius: 5px;
-  }
-  .subscription .sub-type {
-    font-weight: 700;
-    color: var(--neutral-100);
-  }
-  .subscription .sub-type.active {
-    color: var(--primary-100);
-  }
-  .subscription .switcher {
-    background: var(--primary-100);
-    width: 40px;
-    border-radius: 10px;
-    position: relative;
-    cursor: pointer;
-    padding-inline: 4px;
-    height: 22px;
-  }
-  .subscription .switcher::after {
-    position: absolute;
-    content: "";
-    width: 14px;
-    aspect-ratio: 1;
-    background: white;
-    border-radius: 50%;
-    top: 4px;
-    transition: var(--main-transition);
-  }
-  .subscription .switcher.active::after {
-    right: 4px;
+  /* Step 5 */
+  .final-step img {
+    width: 70px;
   }
 }
-
-/* @media (max-width: 767px) {
-  body {
-    align-items: start;
-  }
-  main {
-    flex-direction: column;
-    padding: 0;
-    border-radius: 0;
-    height: auto;
-  }
-  main aside {
-    background: url(assets/images/bg-sidebar-mobile.svg) center/cover no-repeat;
-    border-radius: 0;
-  }
-  main aside ul {
-    display: flex;
-    justify-content: center;
-  }
-} */
