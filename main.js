@@ -106,6 +106,9 @@ function updateValues() {
       addon.value = addon.dataset.value * 1;
       addon.nextElementSibling.nextElementSibling.textContent = `+$${addon.value}/mo`;
     });
+    freeMonths.forEach((month)=>{
+      month.classList.remove('active')
+    })
   } else if (localStorage.billing_type == "Yearly") {
     plans.forEach((plan) => {
       plan.value = plan.dataset.value * 10;
@@ -115,6 +118,9 @@ function updateValues() {
       addon.value = addon.dataset.value * 10;
       addon.nextElementSibling.nextElementSibling.textContent = `+$${addon.value}/yr`;
     });
+    freeMonths.forEach((month)=>{
+      month.classList.add('active')
+    })
   }
 }
 
